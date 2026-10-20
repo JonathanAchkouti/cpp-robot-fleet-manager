@@ -1,48 +1,56 @@
-# Robot Fleet Manager
+# Robot Fleet Manager (C++)
 
-This project is a C++ robot fleet management program for Homework 2. It uses object-oriented programming to model a fleet of robots, including a base `Robot` class and derived classes such as `MobileRobot`, `CleaningRobot`, and `CookingRobot`.
+A C++17 command-line application for managing a fleet of robots, built around
+object-oriented design: an abstract `Robot` base class with specialised
+`MobileRobot`, `CleaningRobot` and `CookingRobot` types, a `Fleet` that owns
+them through smart pointers, and a priority-ordered task queue.
 
-The program allows the user to add robots, remove robots, show all robots, make one robot work, make all robots work, charge all robots, assign tasks, show the task queue, and start timed work using a background thread.
+From an interactive menu you can add and remove robots, list the fleet, make
+one robot or all robots work, charge the fleet, assign tasks, inspect the task
+queue, and start timed work on a background thread.
 
-## Main Features
+## Features
 
-- Abstract base class `Robot`
-- Derived robot classes with overridden `work()` and `type()` methods
-- `Fleet` which is the class that manages robots using smart pointers
+- Abstract base class `Robot` with polymorphic `work()` and `type()` methods
+- Derived robot classes: `MobileRobot`, `CleaningRobot`, `CookingRobot`
+- `Fleet` manages robot lifetimes with smart pointers
 - Task queue ordered by priority
-- Operator overloading for `Robot`, `Task`, and `Fleet`
+- Operator overloading for `Robot`, `Task` and `Fleet`
 - Exception handling for invalid operations
 - Background thread for timed work
 - Interactive menu in `main.cpp`
 
-## File Structure
+## Project structure
 
-robotics-hw2-jonathan/
-├── include/
-│   ├── robot.hpp
-│   ├── mobile_robot.hpp
-│   ├── cleaning_robot.hpp
-│   ├── cooking_robot.hpp
-│   ├── task.hpp
-│   └── fleet.hpp
-├── src/
-│   ├── robot.cpp
-│   ├── mobile_robot.cpp
-│   ├── cleaning_robot.cpp
-│   ├── cooking_robot.cpp
-│   ├── task.cpp
-│   └── fleet.cpp
-├── main.cpp
-├── compile.sh
-├── README.md
-├── ANSWERS.md
-└── ENV_CHECK.md
+```
+include/
+├── robot.hpp
+├── mobile_robot.hpp
+├── cleaning_robot.hpp
+├── cooking_robot.hpp
+├── task.hpp
+└── fleet.hpp
+src/
+├── robot.cpp
+├── mobile_robot.cpp
+├── cleaning_robot.cpp
+├── cooking_robot.cpp
+├── task.cpp
+└── fleet.cpp
+main.cpp
+compile.sh
+```
 
-## HOw to compile
+## Build
 
-`./compile.sh`
-`g++ -std=c++17 -Wall -Wextra src/*.cpp main.cpp -I include -o fleet_app`
+```bash
+./compile.sh
+# or directly:
+g++ -std=c++17 -Wall -Wextra src/*.cpp main.cpp -I include -o fleet_app
+```
 
-## How to run
+## Run
 
-`./fleet_app`
+```bash
+./fleet_app
+```
